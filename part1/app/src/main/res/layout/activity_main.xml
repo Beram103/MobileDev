@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Exercise 2 - Part 1: "The Ugly Wireframe"
+    CIS 2203N Mobile Development | 2025-2026 Semester 2
+
+    ConstraintLayout Student ID Card
+    Dimensions: 320dp x 450dp card inside a full-screen parent
+-->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
+
+    <!--
+        Root Card Container: 320dp x 450dp, centered on screen
+        Background: Light Gray (#E0E0E0)
+    -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cardContainer"
+        android:layout_width="320dp"
+        android:layout_height="450dp"
+        android:background="#E0E0E0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!--
+            Profile Picture (iv_profile)
+            Size: 120dp x 120dp
+            Top to parent top (margin 24dp)
+            Right to parent right (margin EXACTLY 13dp)
+        -->
+        <ImageView
+            android:id="@+id/iv_profile"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:contentDescription="Profile Picture"
+            android:background="#BDBDBD"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="13dp" />
+
+        <!--
+            University Logo (iv_logo)
+            Size: 50dp x 50dp
+            Left to parent left (margin 16dp)
+            Top to parent top (margin 24dp)
+        -->
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:contentDescription="University Logo"
+            android:background="#9E9E9E"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img2"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="24dp" />
+
+        <!--
+            ID Number Badge (tv_id_number)
+            Background: Solid Blue (#0000FF), Text: White
+            THE OVERLAP: Both Top AND Bottom constrained to Bottom of iv_profile
+            → This centers it exactly over the bottom edge of the profile image
+        -->
+        <TextView
+            android:id="@+id/tv_id_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ID: 24103140"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:background="#0000FF"
+            app:layout_constraintTop_toBottomOf="@id/iv_profile"
+            app:layout_constraintBottom_toBottomOf="@id/iv_profile"
+            app:layout_constraintEnd_toEndOf="@id/iv_profile" />
+
+        <!--
+            Student Name (tv_name)
+            Text Size: 20sp, Bold
+            Left to parent left (margin 16dp)
+            Baseline constrained to the baseline of tv_id_number
+            → Baseline alignment with the ID badge text
+        -->
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Amber Meigoumi S. Apale"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#212121"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_id_number" />
+
+        <!--
+            Department Name (tv_department)
+            Constrained to Bottom of iv_logo (marginTop: EXACTLY 41dp)
+            Left to parent left (margin 16dp)
+        -->
+        <TextView
+            android:id="@+id/tv_department"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Department of Computer, Information Sciences and Mathematics"
+            android:textSize="14sp"
+            android:textColor="#424242"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo"
+            android:layout_marginTop="41dp" />
+
+        <!--
+            QR Code (iv_qr)
+            Height: 80dp
+            Width: 0dp (Match Constraint) — stretches between left & right margins
+            Left to parent left (margin 37dp)
+            Right to parent right (margin 37dp)
+            Bottom to parent bottom (margin 24dp)
+        -->
+        <ImageView
+            android:id="@+id/iv_qr"
+            android:layout_width="0dp"
+            android:layout_height="80dp"
+            android:contentDescription="QR Code"
+            android:background="#212121"
+            android:scaleType="fitCenter"
+            android:src="@drawable/img3"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="37dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="37dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="24dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
